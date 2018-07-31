@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Shop.Models.Category>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Shop!</h1>
+   <p>@DateTime.Now.Second</p>
+</div>
+
+<div class="row">
+
+    @using (Ajax.BeginForm(new AjaxOptions
+    {
+        Url = Url.Action("GetCategorybyFilter", "Categories"),
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "categories"
+    }))
+    {
+        <input type="text" name="search" />
+        <input type="submit" />
+    }
+
+    <div id = "categories">
+        @Html.Action("GetCategorybyFilter", "Categories")
+    </div>
+</div>

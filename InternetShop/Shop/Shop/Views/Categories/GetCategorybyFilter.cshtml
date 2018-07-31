@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Shop.Models.Category>
+
+
+    @foreach (var category in Model)
+    {
+        <div class="col-md-4">
+            <h2>@category.Name</h2>
+            <ul>
+                @foreach (var product in category.Products)
+                {
+                    <li>@product.Name  (@product.Price)</li>
+                }
+            </ul>
+        </div>
+    }
